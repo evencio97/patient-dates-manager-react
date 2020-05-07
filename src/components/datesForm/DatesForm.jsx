@@ -1,6 +1,7 @@
 import React from 'react';
 import './DatesForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { v4 as uuid } from 'uuid';
 
 function DatesForm({ title, columns, dates, setDates, addAlert }) {
 
@@ -41,7 +42,7 @@ function DatesForm({ title, columns, dates, setDates, addAlert }) {
             document.getElementById('input-'+error).classList.add("input-error");
             return addAlert({ type: 'Error', message: 'The '+error+' is invalid.' });
         }
-        currentDate.id = dates.length? dates.length:0;
+        currentDate.id = uuid();
         setDates([ ...dates, currentDate ]);
         initForm();
         addAlert({ class: 'alert-success',type: 'Success', message: 'The date have been added.' });
