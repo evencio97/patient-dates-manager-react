@@ -1,6 +1,7 @@
 import React from 'react';
 import './Alerts.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 function Alerts({ alerts, setAlerts }) {
     // { id: , class: '', type: '', message: '' }
@@ -25,5 +26,10 @@ function Alerts({ alerts, setAlerts }) {
         </div>
     );
 };
+
+Alerts.propTypes = {
+    alerts: PropTypes.array.isRequired,
+    setAlerts: PropTypes.func.isRequired,
+}
 
 export default Alerts;

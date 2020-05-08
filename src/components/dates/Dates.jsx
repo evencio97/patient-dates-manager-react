@@ -1,8 +1,10 @@
 import React from 'react';
 import './Dates.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-function Dates({ title, columns, titles, dates, setDates, addAlert }) {
+function Dates({ title= 'Dates List', columns= 'col-6', titles= ['Date', 'Time', 'CI', 'Name', 'Delete']
+                , dates, setDates, addAlert }) {
 
     const removeDate = id => {
         if (!dates.length) return addAlert({ type: 'Error', message: 'The dates list is empty.' });
@@ -52,6 +54,15 @@ function Dates({ title, columns, titles, dates, setDates, addAlert }) {
             }
         </div>
     );
+}
+
+Dates.propTypes = {
+    title: PropTypes.string,
+    columns: PropTypes.string,
+    titles: PropTypes.array,
+    dates: PropTypes.array.isRequired,
+    setDates: PropTypes.func.isRequired,
+    addAlert: PropTypes.func.isRequired
 }
 
 export default Dates;

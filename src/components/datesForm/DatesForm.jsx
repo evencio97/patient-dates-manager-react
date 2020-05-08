@@ -2,8 +2,9 @@ import React from 'react';
 import './DatesForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { v4 as uuid } from 'uuid';
+import PropTypes from 'prop-types';
 
-function DatesForm({ title, columns, dates, setDates, addAlert }) {
+function DatesForm({ title= "Add Date", columns= "col-6", dates, setDates, addAlert }) {
 
     var currentDate = {
         id:"", name: "", lastname: "", ciType: "V", CI: "",
@@ -19,6 +20,7 @@ function DatesForm({ title, columns, dates, setDates, addAlert }) {
     }
 
     const valForm = () => {
+        // console.log(currentDate);
         if (!currentDate.name.trim().length) return 'name';
         if (!currentDate.lastname.trim().length) return 'lastname'; 
         if (currentDate.ciType !== 'V' && currentDate.ciType !== 'E') return 'ciType';
@@ -44,13 +46,14 @@ function DatesForm({ title, columns, dates, setDates, addAlert }) {
         }
         currentDate.id = uuid();
         setDates([ ...dates, currentDate ]);
-        initForm();
         addAlert({ class: 'alert-success',type: 'Success', message: 'The date have been added.' });
+        initForm();
     };
     
     const updateState = e => {
         document.getElementById("input-"+e.target.name).classList.remove("input-error");
         currentDate[e.target.name]= e.target.value;
+        // console.log(currentDate);
     }
 
     return (
@@ -110,6 +113,14 @@ function DatesForm({ title, columns, dates, setDates, addAlert }) {
             </form>
         </div>
     );
+}
+
+DatesForm.propTypes = {
+    title: PropTypes.string,
+    columns: PropTypes.string,
+    dates: PropTypes.array.isRequired,
+    setDates: PropTypes.func.isRequired,
+    addAlert: PropTypes.func.isRequired
 }
 
 export default DatesForm;
