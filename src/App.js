@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 //Components
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -11,7 +11,7 @@ import Dates from './components/dates/Dates';
 import DatesForm from './components/datesForm/DatesForm';
 
 //FontAwesome library
-library.add(fab, faTrashAlt, faCheck);
+library.add(fab, faTimesCircle, faTrashAlt, faCheck);
 //Number of active alerts
 sessionStorage.setItem("numAlerts", 0);
 
